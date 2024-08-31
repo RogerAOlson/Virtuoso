@@ -4,7 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MarketingWeb.Controllers
 {
-    public partial class ContactController : Controller
+    [Route("v1/[controller]")]
+    public partial class ContactController : ControllerBase
     {
         private readonly ILogger<ContactController> _logger;
 
@@ -13,31 +14,31 @@ namespace MarketingWeb.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
-        public async Task<IResult> Index( 
+        [HttpGet("{id:int}")]
+        public async Task<IResult> Index(
             int id,
             [FromServices] IContactSelectViewModelProvider provider)
         {
             return await provider.ExecuteAsync(id, _logger);
         }
 
-        [HttpPut]
-        public async Task<IResult> Update(
-            ContactUpdateViewModel updateContact,
-            [FromServices] IContactUpdateViewModelProvider provider)
-        {
-            return await provider.ExecuteAsync(updateContact, _logger);
-        }
-
         [HttpPost]
         public async Task<IResult> Add(
-            ContactAddViewModel addContact,
+            [FromBody] ContactAddViewModel addContact,
             [FromServices] IContactAddViewModelProvider provider)
         {
             return await provider.ExecuteAsync(addContact, _logger);
         }
 
-        [HttpDelete]
+        [HttpPut]
+        public async Task<IResult> Update(
+            [FromBody] ContactUpdateViewModel updateContact,
+            [FromServices] IContactUpdateViewModelProvider provider)
+        {
+            return await provider.ExecuteAsync(updateContact, _logger);
+        }
+
+        [HttpDelete("{id:int}")]
         public async Task<IResult> Delete(
             int id,
             [FromServices] IContactDeleteViewModelProvider provider)

@@ -9,6 +9,6 @@
   <ItemGroup>
     <ProjectReference Include="..\ContactManagerRepository\ContactManagerRepository.csproj" />
     <ProjectReference Include="..\ContactManager\ContactManager.csproj" />
+    <InternalsVisibleTo Include="MarketingWeb.Integration" />
   </ItemGroup>
-
 </Project>

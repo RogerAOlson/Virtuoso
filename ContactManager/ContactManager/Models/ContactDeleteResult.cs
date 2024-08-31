@@ -5,7 +5,5 @@
         public ContactDeleteResult(ContactServiceResultType statusCode = ContactServiceResultType.Success)
             : base(statusCode)
         { }
-
-        public int Id { get; set; }
     }
 }

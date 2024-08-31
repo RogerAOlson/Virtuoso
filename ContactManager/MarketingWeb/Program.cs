@@ -23,8 +23,8 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Contact}/{action=Index}/{id?}");
+app.MapControllers();
 
 app.Run();
+
+public partial class Program { }

@@ -19,12 +19,7 @@ namespace ContactManager.Commands
             try
             {
                 await ContactManagerRepository.ContactDeleteAsync(contactId, logger).ConfigureAwait(false);
-                var result = new ContactDeleteResult
-                {
-                    Id = contactId,
-                };
-
-                return result;
+                return new ContactDeleteResult();
             }
             catch(RecordNotFoundException)
             {

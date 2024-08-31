@@ -1,6 +1,4 @@
-﻿using ContactManager.Models;
-
-namespace ContactManager.Models
+﻿namespace ContactManager.Models
 {
     public class ContactSelectResult : ContactResult
     {

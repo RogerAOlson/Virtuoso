@@ -13,7 +13,7 @@ namespace ContactManagerRepository
             NextId = 101;
         }
 
-        private static int NextId { get; set; }
-        private static Dictionary<int, ContactTuple> Table { get; set; }
+        public static int NextId { get; set; }
+        public static Dictionary<int, ContactTuple> Table { get; set; }
     }
 }

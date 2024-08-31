@@ -23,6 +23,7 @@ namespace ContactManager.Tests.Services
             var result = await fixture.ExecuteAsync(model, logger).ConfigureAwait(false);
 
             Assert.AreEqual(result.StatusCode, ContactServiceResultType.FirstNameIsInvalid);
+            Assert.IsNull(result.Id);
         }
 
         [DataTestMethod]
@@ -42,6 +43,7 @@ namespace ContactManager.Tests.Services
             var result = await fixture.ExecuteAsync(model, logger).ConfigureAwait(false);
 
             Assert.AreEqual(result.StatusCode, ContactServiceResultType.FirstNameIsRequired);
+            Assert.IsNull(result.Id);
         }
     }
 }

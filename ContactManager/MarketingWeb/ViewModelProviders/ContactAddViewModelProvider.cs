@@ -25,7 +25,7 @@ namespace MarketingWeb.ViewModelProviders
                 PhoneNumber = ContactAddViewModel?.PhoneNumber,
             };
 
-            var result = await this.ContactAddService.ExecuteAsync(model, logger).ConfigureAwait(false);
+            var result = await this.ContactAddService.ExecuteAsync(model, logger);
             return ConvertToActionResult(result);
         }
     }

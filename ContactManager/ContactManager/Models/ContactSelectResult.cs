@@ -11,9 +11,9 @@ namespace ContactManager.Services
 
         public ContactServiceResultType StatusCode { get; set; }
 
-        public string ErrorMessage { get; set; }
+        public string? ErrorMessage { get; set; }
 
-        public T Record { get; set; }
+        public T? Record { get; set; }
     }
 
     public class ContactSelectResult : ContactResult<ContactSelectResult.ContactSelectResultRecord>
@@ -25,10 +25,10 @@ namespace ContactManager.Services
         public class ContactSelectResultRecord
         {
             public int Id { get; set; }
-            public string FirstName { get; set; }
-            public string LastName { get; set; }
-            public string Email { get; set; }
-            public string PhoneNumber { get; set; }
+            public string? FirstName { get; set; }
+            public string? LastName { get; set; }
+            public string? Email { get; set; }
+            public string? PhoneNumber { get; set; }
         }
     }
 }

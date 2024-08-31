@@ -17,6 +17,9 @@ namespace ContactManager.Commands
 
         public async Task<ContactAddResult> ExecuteAsync(ContactAdd model, ILogger logger)
         {
+            if (model is null)
+                throw new ArgumentNullException(nameof(model));
+
             try
             {
                 if(!FirstNameIsRequired(model.FirstName))
@@ -39,7 +42,7 @@ namespace ContactManager.Commands
                 if (!PhoneNumberIsValid(model.PhoneNumber))
                     return new ContactAddResult(ContactServiceResultType.PhoneNumberIsInvalid);
 
-                var contactId = await ContactManagerRepository.ContactAddAsync(model, logger);
+                var contactId = await ContactManagerRepository.ContactAddAsync(model, logger).ConfigureAwait(false);
                 var result = new ContactAddResult
                 {
                     Id = contactId,
@@ -47,15 +50,15 @@ namespace ContactManager.Commands
 
                 return result;
             }
-            catch(RecordAlreadyExistsException ex)
+            catch(RecordAlreadyExistsException)
             {
                 return new ContactAddResult(ContactServiceResultType.ContactAlreadyExists);
             }
-            catch(RepositoryExceptions ex)
+            catch(RepositoryExceptions)
             {
                 logger.Log(LogLevel.Error, "Unexpected database error while adding contact");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 logger.Log(LogLevel.Error, "Unexpected database error while adding contact");
             }

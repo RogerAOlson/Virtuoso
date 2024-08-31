@@ -44,7 +44,7 @@ namespace ContactManager.Commands
                 if (!PhoneNumberIsValid(model.PhoneNumber))
                     return new ContactUpdateResult(ContactServiceResultType.PhoneNumberIsInvalid);
 
-                await ContactManagerRepository.ContactUpdateAsync(model, logger);
+                await ContactManagerRepository.ContactUpdateAsync(model, logger).ConfigureAwait(false);
                 var result = new ContactUpdateResult
                 {
                     Id = model.Id,
@@ -52,15 +52,15 @@ namespace ContactManager.Commands
 
                 return result;
             }
-            catch(RecordNotFoundException ex)
+            catch(RecordNotFoundException)
             {
                 return new ContactUpdateResult(ContactServiceResultType.ContactNotFound);
             }
-            catch(RepositoryExceptions ex)
+            catch(RepositoryExceptions)
             {
                 logger.Log(LogLevel.Error, "Unexpected database error while inserting user");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 logger.Log(LogLevel.Error, "Unexpected database error while inserting user");
             }

@@ -19,7 +19,7 @@ namespace ContactManager.Commands
         {
             try
             {
-                await ContactManagerRepository.ContactDeleteAsync(contactId, logger);
+                await ContactManagerRepository.ContactDeleteAsync(contactId, logger).ConfigureAwait(false);
                 var result = new ContactDeleteResult
                 {
                     Id = contactId,
@@ -27,15 +27,15 @@ namespace ContactManager.Commands
 
                 return result;
             }
-            catch(RecordNotFoundException ex)
+            catch(RecordNotFoundException)
             {
                 return new ContactDeleteResult(ContactServiceResultType.ContactNotFound);
             }
-            catch(RepositoryExceptions ex)
+            catch(RepositoryExceptions)
             {
                 logger.Log(LogLevel.Error, "Unexpected database error while deleting contact");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 logger.Log(LogLevel.Error, "Unexpected database error while deleting contact");
             }

@@ -19,7 +19,7 @@ namespace ContactManager.Commands
         {
             try
             {
-                var model = await ContactManagerRepository.ContactSelectAsync(contactId, logger);
+                var model = await ContactManagerRepository.ContactSelectAsync(contactId, logger).ConfigureAwait(false);
                 if(model == null)
                 {
                     return new ContactSelectResult(ContactServiceResultType.ContactNotFound);
@@ -38,11 +38,11 @@ namespace ContactManager.Commands
                 };
                 return result;
             }
-            catch(RepositoryExceptions ex)
+            catch(RepositoryExceptions)
             {
                 logger.Log(LogLevel.Error, "Unexpected database error while inserting contact");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 logger.Log(LogLevel.Error, "Unexpected database error while getting contact");
             }

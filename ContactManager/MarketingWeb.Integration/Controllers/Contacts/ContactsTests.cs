@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc.Testing;
 using Newtonsoft.Json;
 using System.Text;
-using static ContactManager.Models.ContactSelectResult;
 
 namespace MarketingWeb.Integration.Controllers.Contacts
 {

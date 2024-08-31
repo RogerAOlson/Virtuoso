@@ -1,6 +1,6 @@
 ﻿namespace ContactManager.Models
 {
-    public class RepositoryExceptions : IOException
+    public class RepositoryExceptions : Exception
     {
     }
 

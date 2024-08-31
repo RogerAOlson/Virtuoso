@@ -15,35 +15,35 @@ namespace MarketingWeb.Controllers
         }
 
         [HttpGet("{id:int}")]
-        public async Task<IResult> Index(
+        public Task<IResult> Index(
             int id,
             [FromServices] IContactSelectViewModelProvider provider)
         {
-            return await provider.ExecuteAsync(id, _logger);
+            return provider.ExecuteAsync(id, _logger);
         }
 
         [HttpPost]
-        public async Task<IResult> Add(
+        public Task<IResult> Add(
             [FromBody] ContactAddViewModel addContact,
             [FromServices] IContactAddViewModelProvider provider)
         {
-            return await provider.ExecuteAsync(addContact, _logger);
+            return provider.ExecuteAsync(addContact, _logger);
         }
 
         [HttpPut]
-        public async Task<IResult> Update(
+        public Task<IResult> Update(
             [FromBody] ContactUpdateViewModel updateContact,
             [FromServices] IContactUpdateViewModelProvider provider)
         {
-            return await provider.ExecuteAsync(updateContact, _logger);
+            return provider.ExecuteAsync(updateContact, _logger);
         }
 
         [HttpDelete("{id:int}")]
-        public async Task<IResult> Delete(
+        public Task<IResult> Delete(
             int id,
             [FromServices] IContactDeleteViewModelProvider provider)
         {
-            return await provider.ExecuteAsync(id, _logger);
+            return provider.ExecuteAsync(id, _logger);
         }
     }
 }

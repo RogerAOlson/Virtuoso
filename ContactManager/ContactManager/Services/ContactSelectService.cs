@@ -21,8 +21,11 @@ namespace ContactManager.Commands
                 var model = await ContactManagerRepository.ContactSelectAsync(contactId, logger).ConfigureAwait(false);
                 if(model == null)
                 {
+                    logger.Log(LogLevel.Debug, "Contact {ContactId} does not exist", contactId);
                     return new ContactSelectResult(ContactServiceResultType.ContactNotFound);
                 }
+
+                logger.Log(LogLevel.Debug, "Successfully selected contact {ContactId}", contactId);
 
                 var result = new ContactSelectResult
                 {
@@ -37,13 +40,13 @@ namespace ContactManager.Commands
                 };
                 return result;
             }
-            catch(RepositoryExceptions)
+            catch (RepositoryExceptions)
             {
-                logger.Log(LogLevel.Error, "Unexpected database error while inserting contact");
+                logger.Log(LogLevel.Error, "Unexpected database error while deleting contact {ContactId}", contactId);
             }
             catch (Exception)
             {
-                logger.Log(LogLevel.Error, "Unexpected database error while getting contact");
+                logger.Log(LogLevel.Error, "Unexpected error while deleting contact {ContactId}", contactId);
             }
 
             return new ContactSelectResult(ContactServiceResultType.UnknownError);

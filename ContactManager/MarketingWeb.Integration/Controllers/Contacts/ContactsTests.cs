@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Testing;
 using Newtonsoft.Json;
 using System.Text;
+using static ContactManager.Models.ContactSelectResult;
 
 namespace MarketingWeb.Integration.Controllers.Contacts
 {
@@ -18,16 +19,17 @@ namespace MarketingWeb.Integration.Controllers.Contacts
             var response = await httpClient.GetAsync($"/v1/contact/{id}").ConfigureAwait(false);
 
             var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-            var r = JsonConvert.DeserializeObject<ContactSelectResult.ContactSelectResultRecord>(json);
+            var contactSelectResultRecord = JsonConvert.DeserializeObject<ContactSelectResult.ContactSelectResultRecord>(json);
 
+            Assert.IsNotNull(contactSelectResultRecord);
             Assert.AreEqual(System.Net.HttpStatusCode.OK, response.StatusCode);
 
             Assert.IsTrue(ContactManagerRepository.Repository.Table.ContainsKey(id));
             var tuple = ContactManagerRepository.Repository.Table[id];
-            Assert.AreEqual(r.FirstName, tuple.FirstName);
-            Assert.AreEqual(r.LastName, tuple.LastName);
-            Assert.AreEqual(r.Email, tuple.Email);
-            Assert.AreEqual(r.PhoneNumber, tuple.PhoneNumber);
+            Assert.AreEqual(contactSelectResultRecord.FirstName, tuple.FirstName);
+            Assert.AreEqual(contactSelectResultRecord.LastName, tuple.LastName);
+            Assert.AreEqual(contactSelectResultRecord.Email, tuple.Email);
+            Assert.AreEqual(contactSelectResultRecord.PhoneNumber, tuple.PhoneNumber);
         }
 
         [TestMethod]
@@ -122,8 +124,10 @@ namespace MarketingWeb.Integration.Controllers.Contacts
             response.EnsureSuccessStatusCode();
 
             var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-            var r = JsonConvert.DeserializeObject<ContactAddResult>(json);
-            var id = r.Id.Value;
+            var contactAddResult = JsonConvert.DeserializeObject<ContactAddResult>(json);
+
+            Assert.IsNotNull(contactAddResult);
+            var id = contactAddResult.Id;
 
             Assert.IsTrue(ContactManagerRepository.Repository.Table.ContainsKey(id));
             var tuple = ContactManagerRepository.Repository.Table[id];

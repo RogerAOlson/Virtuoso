@@ -1,4 +1,5 @@
-﻿using ContactManager.Services;
+﻿using ContactManager.Models;
+using ContactManager.Services;
 
 namespace MarketingWeb.ViewModelProviders
 {
@@ -15,8 +16,18 @@ namespace MarketingWeb.ViewModelProviders
             int contactId,
             ILogger logger)
         {
-            var result = await ContactSelectService.ExecuteAsync(contactId, logger);
-            return ConvertToActionResult(result);
+            logger.LogDebug("Select contact {ContactId}", contactId);
+
+            var result = await ContactSelectService.ExecuteAsync(contactId, logger).ConfigureAwait(false);
+            return ToActionResult(result);
+        }
+
+        public IResult ToActionResult(ContactSelectResult result)
+        {
+            if (result.StatusCode == ContactServiceResultType.Success)
+                return Results.Ok(result.Record);
+
+            return base.ToActionResult(result);
         }
     }
 }

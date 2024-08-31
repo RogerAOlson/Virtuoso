@@ -14,19 +14,29 @@ namespace MarketingWeb.ViewModelProviders
         private IContactAddService ContactAddService { get; }
 
         public async Task<IResult> ExecuteAsync(
-            ContactAddViewModel? ContactAddViewModel,
+            ContactAddViewModel? contactAddViewModel,
             ILogger logger)
         {
+            logger.LogDebug("Adding contact {FirstName} {LastName}", contactAddViewModel?.FirstName, contactAddViewModel?.LastName);
+
             var model = new ContactAdd
             {
-                FirstName = ContactAddViewModel?.FirstName,
-                LastName = ContactAddViewModel?.LastName,
-                Email = ContactAddViewModel?.Email,
-                PhoneNumber = ContactAddViewModel?.PhoneNumber,
+                FirstName = contactAddViewModel?.FirstName,
+                LastName = contactAddViewModel?.LastName,
+                Email = contactAddViewModel?.Email,
+                PhoneNumber = contactAddViewModel?.PhoneNumber,
             };
 
-            var result = await ContactAddService.ExecuteAsync(model, logger);
-            return ConvertToActionResult(result);
+            var result = await ContactAddService.ExecuteAsync(model, logger).ConfigureAwait(false);
+            return ToActionResult(result);
+        }
+
+        public IResult ToActionResult(ContactAddResult result)
+        {
+            if (result.StatusCode == ContactServiceResultType.Success)
+                return Results.Ok(new { result.Id });
+
+            return base.ToActionResult(result);
         }
     }
 }

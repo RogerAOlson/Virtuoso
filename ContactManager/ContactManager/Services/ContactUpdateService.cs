@@ -49,10 +49,13 @@ namespace ContactManager.Commands
                     Id = model.Id,
                 };
 
+                logger.Log(LogLevel.Debug, "Successfully updated contact {ContactId}", model.Id);
+
                 return result;
             }
             catch(RecordNotFoundException)
             {
+                logger.Log(LogLevel.Error, "Unable to locate contact {ContactId}", model.Id);
                 return new ContactUpdateResult(ContactServiceResultType.ContactNotFound);
             }
             catch(RepositoryExceptions)
@@ -61,7 +64,7 @@ namespace ContactManager.Commands
             }
             catch (Exception)
             {
-                logger.Log(LogLevel.Error, "Unexpected database error while inserting user");
+                logger.Log(LogLevel.Error, "Unexpected error while inserting user");
             }
 
             return new ContactUpdateResult(ContactServiceResultType.UnknownError);

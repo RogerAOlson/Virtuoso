@@ -47,19 +47,22 @@ namespace ContactManager.Commands
                     Id = contactId,
                 };
 
+                logger.Log(LogLevel.Debug, "Successfully added contact {ContactId}", contactId);
+
                 return result;
             }
             catch(RecordAlreadyExistsException)
             {
+                logger.Log(LogLevel.Error, "Contact already exists");
                 return new ContactAddResult(ContactServiceResultType.ContactAlreadyExists);
             }
-            catch(RepositoryExceptions)
+            catch (RepositoryExceptions)
             {
-                logger.Log(LogLevel.Error, "Unexpected database error while adding contact");
+                logger.Log(LogLevel.Error, "Unexpected database error while deleting contact");
             }
             catch (Exception)
             {
-                logger.Log(LogLevel.Error, "Unexpected database error while adding contact");
+                logger.Log(LogLevel.Error, "Unexpected error while deleting contact");
             }
 
             return new ContactAddResult(ContactServiceResultType.UnknownError);

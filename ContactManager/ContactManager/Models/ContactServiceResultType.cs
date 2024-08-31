@@ -2,9 +2,9 @@
 {
     public enum ContactServiceResultType
     {
-        Success,
-        UnknownError,
+        Success = 1,
 
+        UnknownError = 1001,
         IdIsRequired,
         IdIsInvalid,
         FirstNameIsRequired,

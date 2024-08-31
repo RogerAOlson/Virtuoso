@@ -15,8 +15,10 @@ namespace MarketingWeb.ViewModelProviders
             int contactId,
             ILogger logger)
         {
-            var result = await ContactDeleteService.ExecuteAsync(contactId, logger);
-            return ConvertToActionResult(result);
+            logger.LogDebug("Deleting contact {ContactId}", contactId);
+
+            var result = await ContactDeleteService.ExecuteAsync(contactId, logger).ConfigureAwait(false);
+            return ToActionResult(result);
         }
     }
 }

@@ -27,7 +27,7 @@ namespace MarketingWeb.ViewModelProviders
             };
 
             var result = await ContactUpdateService.ExecuteAsync(model, logger);
-            return ConvertToActionResult(result);
+            return ToActionResult(result);
         }
     }
 }

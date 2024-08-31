@@ -11,3 +11,7 @@
 /ContactManager/MarketingWeb/obj
 /ContactManager/ContactManager/bin/Debug/net8.0
 /ContactManager/ContactManager/obj
+/ContactManager/ContactManagerRepository.Tests/bin/Debug/net8.0
+/ContactManager/ContactManagerRepository.Tests/obj
+/ContactManager/MarketingWeb.Tests/bin/Debug/net8.0
+/ContactManager/MarketingWeb.Tests/obj

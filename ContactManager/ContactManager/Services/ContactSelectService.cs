@@ -1,6 +1,5 @@
 ﻿using ContactManager.Models;
-using ContactManager.Repository.ContactManager;
-using ContactManager.Repository.Exceptions;
+using ContactManager.Repositories;
 using ContactManager.Services;
 using Microsoft.Extensions.Logging;
 

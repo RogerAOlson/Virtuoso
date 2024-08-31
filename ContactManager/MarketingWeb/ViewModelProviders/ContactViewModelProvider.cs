@@ -1,5 +1,4 @@
 ﻿using ContactManager.Models;
-using ContactManager.Services;
 
 namespace MarketingWeb.ViewModelProviders
 {
@@ -10,30 +9,30 @@ namespace MarketingWeb.ViewModelProviders
             if (result.StatusCode == ContactServiceResultType.Success)
                 return Results.Ok(result.Record);
 
-            return ConvertToActionResult(result.StatusCode);
+            return ConvertToActionResultCommon(result);
         }
 
         public IResult ConvertToActionResult(ContactAddResult result)
         {
-            if (result.ResultType == ContactServiceResultType.Success)
+            if (result.StatusCode == ContactServiceResultType.Success)
                 return Results.Ok(new { result.Id });
 
-            return ConvertToActionResult(result.ResultType);
+            return ConvertToActionResultCommon(result);
         }
 
         public IResult ConvertToActionResult(ContactUpdateResult result)
         {
-            return ConvertToActionResult(result.ResultType);
+            return ConvertToActionResultCommon(result);
         }
 
         public IResult ConvertToActionResult(ContactDeleteResult result)
         {
-            return ConvertToActionResult(result.ResultType);
+            return ConvertToActionResultCommon(result);
         }
 
-        public IResult ConvertToActionResult(ContactServiceResultType resultType)
+        public IResult ConvertToActionResultCommon<T>(T result) where T : ContactResult
         {
-            return resultType switch
+            return result.StatusCode switch
             {
                 ContactServiceResultType.Success => Results.Ok(),
                 ContactServiceResultType.UnknownError => Results.Problem("Unexpected error"),
@@ -49,9 +48,17 @@ namespace MarketingWeb.ViewModelProviders
                 ContactServiceResultType.PhoneNumberIsRequired => MyBadRequest("PhoneNumber is required"),
                 ContactServiceResultType.PhoneNumberIsInvalid => MyBadRequest("PhoneNumber is invalid"),
 
-                ContactServiceResultType.ContactNotFound => Results.NotFound(new { Errormessage = "Contact not found" }),
+                ContactServiceResultType.ContactNotFound => MyNotFound(result, "Contact not found"),
                 ContactServiceResultType.ContactAlreadyExists => MyBadRequest("Contact already exists"),
+
+                _ => throw new NotImplementedException("doh!")
             };
+        }
+
+        public IResult MyNotFound<T>(T result, string errorMessage) where T : ContactResult
+        {
+            result.ErrorMessage = errorMessage;
+            return Results.NotFound(result);
         }
 
         public IResult MyBadRequest(string errorMessage)

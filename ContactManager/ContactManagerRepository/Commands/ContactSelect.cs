@@ -1,21 +1,22 @@
-﻿using ContactManager.Repository.ContactManager;
+﻿using ContactManager.Repositories;
+using ContactManagerRepository.Models;
 using Microsoft.Extensions.Logging;
 
-namespace ContactManagerRepository.Repository.ContactManager
+namespace ContactManagerRepository
 {
     public partial class Repository : IContactManangerRepositoryContactSelect
     {
-        public Task<ContactSelectRepositoryResult> ContactSelectAsync(int contactId, ILogger logger)
+        public Task<IContactSelectRepositoryResult> ContactSelectAsync(int contactId, ILogger logger)
         {
             if (!Table.ContainsKey(contactId))
             {
                 logger.Log(LogLevel.Error, $"Contact Id {contactId} not found");
-                return Task.FromResult<ContactSelectRepositoryResult>(null);
+                return Task.FromResult<IContactSelectRepositoryResult>(null);
             }
 
             var tuple = Table[contactId];
 
-            var result = new ContactSelectRepositoryResult
+            var result = (IContactSelectRepositoryResult) new ContactSelectRepositoryResult
             {
                 Id = tuple.Id,
                 FirstName = tuple.FirstName,

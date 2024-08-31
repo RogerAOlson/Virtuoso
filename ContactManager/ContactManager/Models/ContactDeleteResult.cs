@@ -1,13 +1,10 @@
 ﻿namespace ContactManager.Models
 {
-    public class ContactDeleteResult
+    public class ContactDeleteResult : ContactResult
     {
-        public ContactDeleteResult(ContactServiceResultType type = ContactServiceResultType.Success)
-        {
-            ResultType = type;
-        }
-
-        public ContactServiceResultType ResultType { get; set; }
+        public ContactDeleteResult(ContactServiceResultType statusCode = ContactServiceResultType.Success)
+            : base(statusCode)
+        { }
 
         public int Id { get; set; }
     }

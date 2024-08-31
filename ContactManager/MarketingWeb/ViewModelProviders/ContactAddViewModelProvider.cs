@@ -14,7 +14,7 @@ namespace MarketingWeb.ViewModelProviders
         private IContactAddService ContactAddService { get; }
 
         public async Task<IResult> ExecuteAsync(
-            ContactAddViewModel ContactAddViewModel,
+            ContactAddViewModel? ContactAddViewModel,
             ILogger logger)
         {
             var model = new ContactAdd
@@ -25,7 +25,7 @@ namespace MarketingWeb.ViewModelProviders
                 PhoneNumber = ContactAddViewModel?.PhoneNumber,
             };
 
-            var result = await this.ContactAddService.ExecuteAsync(model, logger);
+            var result = await ContactAddService.ExecuteAsync(model, logger);
             return ConvertToActionResult(result);
         }
     }

@@ -1,4 +1,5 @@
 ﻿using ContactManager.Commands;
+using ContactManager.Models;
 using Microsoft.Extensions.Logging;
 
 namespace ContactManager.Services

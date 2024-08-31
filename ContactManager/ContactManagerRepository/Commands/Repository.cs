@@ -1,6 +1,6 @@
-﻿using ContactManagerRepository.Models;
+﻿using Repository.Models;
 
-namespace ContactManagerRepository.Repository.ContactManager
+namespace ContactManagerRepository
 {
     public partial class Repository
     {

@@ -1,8 +1,8 @@
-﻿using ContactManager.Repository.ContactManager;
-using ContactManager.Repository.Exceptions;
+﻿using ContactManager.Models;
+using ContactManager.Repositories;
 using Microsoft.Extensions.Logging;
 
-namespace ContactManagerRepository.Repository.ContactManager
+namespace ContactManagerRepository
 {
     public partial class Repository : IContactManangerRepositoryContactDelete
     {

@@ -1,4 +1,4 @@
-﻿namespace ContactManager.Repository.ContactManager
+﻿namespace ContactManager.Repositories
 {
     public interface IContactManangerRepository :
         IContactManangerRepositoryContactSelect,

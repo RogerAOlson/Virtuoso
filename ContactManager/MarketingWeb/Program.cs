@@ -2,7 +2,7 @@
 var builder = WebApplication.CreateBuilder(args);
 
 ContactManager.ServiceCollectionExtensions.RegisterContactManager(builder.Services);
-ContactManagerRepository.ServiceCollectionExtensions.RegisterContactManagerRepository(builder.Services);
+Repository.ServiceCollectionExtensions.RegisterContactManagerRepository(builder.Services);
 MarketingWeb.ServiceCollectionExtensions.RegisterMarketingWeb(builder.Services);
 
 // Add services to the container.

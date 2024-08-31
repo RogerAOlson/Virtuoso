@@ -1,26 +1,14 @@
 ﻿using ContactManager.Models;
 
-namespace ContactManager.Services
+namespace ContactManager.Models
 {
-    public class ContactResult<T>
-    {
-        public ContactResult(ContactServiceResultType statusCode)
-        {
-            StatusCode = statusCode;
-        }
-
-        public ContactServiceResultType StatusCode { get; set; }
-
-        public string? ErrorMessage { get; set; }
-
-        public T? Record { get; set; }
-    }
-
-    public class ContactSelectResult : ContactResult<ContactSelectResult.ContactSelectResultRecord>
+    public class ContactSelectResult : ContactResult
     {
         public ContactSelectResult(ContactServiceResultType statusCode = ContactServiceResultType.Success)
             : base(statusCode)
         { }
+
+        public ContactSelectResultRecord? Record { get; set; }
 
         public class ContactSelectResultRecord
         {

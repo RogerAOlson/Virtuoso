@@ -1,6 +1,6 @@
-﻿namespace Repository.Models
+﻿namespace ContactManager.Repositories
 {
-    public class ContactTuple
+    public interface IContactSelectRepositoryResult
     {
         public int Id { get; set; }
         public string? FirstName { get; set; }

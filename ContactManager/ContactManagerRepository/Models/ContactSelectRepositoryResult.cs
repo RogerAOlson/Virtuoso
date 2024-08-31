@@ -1,6 +1,8 @@
-﻿namespace ContactManager.Repository.ContactManager
+﻿using ContactManager.Repositories;
+
+namespace ContactManagerRepository.Models
 {
-    public class ContactSelectRepositoryResult
+    public class ContactSelectRepositoryResult : IContactSelectRepositoryResult
     {
         public int Id { get; set; }
         public string? FirstName { get; set; }

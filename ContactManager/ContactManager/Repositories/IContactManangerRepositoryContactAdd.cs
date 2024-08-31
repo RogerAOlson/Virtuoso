@@ -1,7 +1,7 @@
 ﻿using ContactManager.Models;
 using Microsoft.Extensions.Logging;
 
-namespace ContactManager.Repository.ContactManager
+namespace ContactManager.Repositories
 {
     public interface IContactManangerRepositoryContactAdd
     {

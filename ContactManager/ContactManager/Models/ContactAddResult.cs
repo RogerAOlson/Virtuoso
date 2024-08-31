@@ -1,13 +1,10 @@
 ﻿namespace ContactManager.Models
 {
-    public class ContactAddResult
+    public class ContactAddResult : ContactResult
     {
-        public ContactAddResult(ContactServiceResultType type = ContactServiceResultType.Success)
-        {
-            ResultType = type;
-        }
-
-        public ContactServiceResultType ResultType { get; set; }
+        public ContactAddResult(ContactServiceResultType statusCode = ContactServiceResultType.Success)
+            : base(statusCode)
+        { }
 
         public int Id { get; set; }
     }

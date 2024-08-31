@@ -1,4 +1,4 @@
-﻿namespace ContactManager.Repository.Exceptions
+﻿namespace ContactManager.Models
 {
     public class RepositoryExceptions : IOException
     {
@@ -8,7 +8,7 @@
     {
     }
 
-    public class  RecordNotFoundException : RepositoryExceptions
+    public class RecordNotFoundException : RepositoryExceptions
     {
     }
 }

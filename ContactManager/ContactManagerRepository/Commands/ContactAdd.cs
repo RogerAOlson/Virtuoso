@@ -1,9 +1,9 @@
 ﻿using ContactManager.Models;
-using ContactManager.Repository.ContactManager;
-using ContactManagerRepository.Models;
+using Repository.Models;
 using Microsoft.Extensions.Logging;
+using ContactManager.Repositories;
 
-namespace ContactManagerRepository.Repository.ContactManager
+namespace ContactManagerRepository
 {
     public partial class Repository : IContactManangerRepositoryContactAdd
     {

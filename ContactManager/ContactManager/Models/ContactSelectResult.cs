@@ -6,7 +6,7 @@
             : base(statusCode)
         { }
 
-        public ContactSelectResultRecord Record { get; set; }
+        public ContactSelectResultRecord? Record { get; set; }
 
         public class ContactSelectResultRecord
         {

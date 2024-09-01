@@ -15,6 +15,6 @@ namespace ContactManagerRepositoryDB
             return new SqlConnection(ConnectionString);
         }
 
-        private string ConnectionString { get; set; }
+        private string? ConnectionString { get; set; }
     }
 }

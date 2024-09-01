@@ -23,3 +23,7 @@
 /ContactManager/ContactManager.TestsX
 /ContactManager/MarketingWeb.Integration/bin/Debug/net8.0
 /ContactManager/MarketingWeb.Integration/obj
+/ContactManager/ContactManagerRepositoryDB/bin/Debug/net8.0
+/ContactManager/ContactManagerRepositoryDB/obj
+/ContactManager/ContactManagerRepositoryDB.Integration/bin/Debug/net8.0
+/ContactManager/ContactManagerRepositoryDB.Integration/obj

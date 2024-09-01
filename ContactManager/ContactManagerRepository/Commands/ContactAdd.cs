@@ -5,7 +5,7 @@ using ContactManager.Repositories;
 
 namespace ContactManagerRepositoryDict
 {
-    public partial class Repository : IContactManangerRepositoryContactAdd
+    public partial class Repository : IContactManagerRepositoryContactAdd
     {
         public Task<int> ContactAddAsync(ContactAdd model, ILogger logger)
         {

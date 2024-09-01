@@ -1,8 +1,8 @@
 ﻿using ContactManager.Repositories;
 
-namespace ContactManagerRepository.Models
+namespace ContactManagerRepositoryDB.Models
 {
-    public class ContactSelectRepositoryResult : IContactSelectRepositoryResult
+    public class ContactManagerRepositoryContactSelectResult : IContactManagerRepositoryContactSelectResult
     {
         public int Id { get; set; }
         public string? FirstName { get; set; }

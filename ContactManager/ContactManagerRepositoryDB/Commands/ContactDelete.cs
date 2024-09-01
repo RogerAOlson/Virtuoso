@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 
 namespace ContactManagerRepositoryDB
 {
-    public partial class Repository : IContactManangerRepositoryContactDelete
+    public partial class Repository : IContactManagerRepositoryContactDelete
     {
         public async Task ContactDeleteAsync(int contactId, ILogger logger)
         {

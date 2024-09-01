@@ -2,7 +2,7 @@
 
 namespace ContactManagerRepositoryDict.Models
 {
-    public class ContactSelectRepositoryResult : IContactSelectRepositoryResult
+    public class ContactManagerRepositoryContactSelectResult : IContactManagerRepositoryContactSelectResult
     {
         public int Id { get; set; }
         public string? FirstName { get; set; }

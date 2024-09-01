@@ -7,10 +7,10 @@ namespace ContactManagerRepositoryDict
     {
         public static void RegisterContactManagerRepository(IServiceCollection services)
         {
-            services.AddScoped<IContactManangerRepositoryContactSelect, Repository>();
-            services.AddScoped<IContactManangerRepositoryContactAdd, Repository>();
-            services.AddScoped<IContactManangerRepositoryContactDelete, Repository>();
-            services.AddScoped<IContactManangerRepositoryContactUpdate, Repository>();
+            services.AddScoped<IContactManagerRepositoryContactSelect, Repository>();
+            services.AddScoped<IContactManagerRepositoryContactAdd, Repository>();
+            services.AddScoped<IContactManagerRepositoryContactDelete, Repository>();
+            services.AddScoped<IContactManagerRepositoryContactUpdate, Repository>();
         }
     }
 }

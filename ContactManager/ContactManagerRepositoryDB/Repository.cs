@@ -7,7 +7,7 @@ namespace ContactManagerRepositoryDB
     {
         public Repository(IContactManagerRepositoryConfiguration configuration)
         {
-            this.ConnectionString = configuration.ConnectionString;
+            ConnectionString = configuration.ContactManagerRepositoryConnectionString;
         }
 
         public SqlConnection CreateConnection()

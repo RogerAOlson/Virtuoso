@@ -1,8 +1,6 @@
 ﻿using ContactManager.Models;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Configuration;
 using NSubstitute;
-using ContactManagerRepositoryDict.Models;
 
 namespace ContactManagerRepositoryDict.Integration.Commands
 {
@@ -21,9 +19,8 @@ namespace ContactManagerRepositoryDict.Integration.Commands
             };
 
             var logger = Substitute.For<ILogger>();
-            var configuration = Substitute.For<IContactManagerConfiguration>();
 
-            var fixture = new Repository(configuration);
+            var fixture = new Repository();
 
             var id = await fixture.ContactAddAsync(model, logger).ConfigureAwait(false);
             Assert.IsTrue(id > 100);

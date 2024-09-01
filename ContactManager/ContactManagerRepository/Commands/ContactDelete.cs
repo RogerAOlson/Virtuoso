@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 
 namespace ContactManagerRepositoryDict
 {
-    public partial class Repository : IContactManangerRepositoryContactDelete
+    public partial class Repository : IContactManagerRepositoryContactDelete
     {
         public Task ContactDeleteAsync(int contactId, ILogger logger)
         {

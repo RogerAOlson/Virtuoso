@@ -17,7 +17,7 @@ namespace ContactManager.Tests.Services
             };
 
             var logger = NSubstitute.Substitute.For<ILogger>();
-            var repository = NSubstitute.Substitute.For<IContactManangerRepositoryContactAdd>();
+            var repository = NSubstitute.Substitute.For<IContactManagerRepositoryContactAdd>();
 
             var fixture = new ContactAddService(repository);
             var result = await fixture.ExecuteAsync(model, logger).ConfigureAwait(false);
@@ -37,7 +37,7 @@ namespace ContactManager.Tests.Services
             };
 
             var logger = NSubstitute.Substitute.For<ILogger>();
-            var repository = NSubstitute.Substitute.For<IContactManangerRepositoryContactAdd>();
+            var repository = NSubstitute.Substitute.For<IContactManagerRepositoryContactAdd>();
 
             var fixture = new ContactAddService(repository);
             var result = await fixture.ExecuteAsync(model, logger).ConfigureAwait(false);

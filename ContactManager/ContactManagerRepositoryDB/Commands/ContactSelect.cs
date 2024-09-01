@@ -1,15 +1,15 @@
 ﻿using ContactManager.Models;
 using ContactManager.Repositories;
-using ContactManagerRepository.Models;
+using ContactManagerRepositoryDB.Models;
 using Microsoft.Extensions.Logging;
 using System.Data.SqlClient;
 using System.Data;
 
 namespace ContactManagerRepositoryDB
 {
-    public partial class Repository : IContactManangerRepositoryContactSelect
+    public partial class Repository : IContactManagerRepositoryContactSelect
     {
-        public async Task<IContactSelectRepositoryResult?> ContactSelectAsync(int contactId, ILogger logger)
+        public async Task<IContactManagerRepositoryContactSelectResult?> ContactSelectAsync(int contactId, ILogger logger)
         {
             SqlConnection? conn = null;
 
@@ -25,7 +25,7 @@ namespace ContactManagerRepositoryDB
                 using var reader = await cmd.ExecuteReaderAsync().ConfigureAwait(false);
                 if (reader.HasRows && await reader.ReadAsync().ConfigureAwait(false))
                 {
-                    var result = new ContactSelectRepositoryResult()
+                    var result = new ContactManagerRepositoryContactSelectResult()
                     {
                         Id = (int)reader["ContactId"],
                         FirstName = reader.IsDBNull("FirstName") ? null : (string)reader["FirstName"],

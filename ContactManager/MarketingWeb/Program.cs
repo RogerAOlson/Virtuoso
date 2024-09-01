@@ -1,18 +1,19 @@
 using ContactManager.Models;
-using ContactManagerRepositoryDict.Models;
+using ContactManagerRepositoryDB.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 
-var configurationManager = new ContactManagerConfiguration();
-builder.Services.AddSingleton<IContactManagerRepositoryConfiguration>(configurationManager);
 
 ContactManager.ServiceCollectionExtensions.RegisterContactManager(builder.Services);
 MarketingWeb.ServiceCollectionExtensions.RegisterMarketingWeb(builder.Services);
 if (!builder.Environment.IsDevelopment())
 {
     ContactManagerRepositoryDB.ServiceCollectionExtensions.RegisterContactManagerRepository(builder.Services);
-    configurationManager.ConnectionString = builder.Configuration.GetValue<string>("ContactManagerRepositoryDB:ConnectionString");
+
+    var configurationManager = new ContactManagerRepositoryConfiguration();
+    configurationManager.ContactManagerRepositoryConnectionString = builder.Configuration.GetValue<string>("ContactManagerRepositoryDB:ConnectionString");
+    builder.Services.AddSingleton<IContactManagerRepositoryConfiguration>(configurationManager);
 }
 else
 {

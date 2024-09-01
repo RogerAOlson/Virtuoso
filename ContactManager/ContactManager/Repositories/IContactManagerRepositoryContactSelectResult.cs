@@ -1,6 +1,6 @@
 ﻿namespace ContactManager.Repositories
 {
-    public interface IContactSelectRepositoryResult
+    public interface IContactManagerRepositoryContactSelectResult
     {
         public int Id { get; set; }
         public string? FirstName { get; set; }

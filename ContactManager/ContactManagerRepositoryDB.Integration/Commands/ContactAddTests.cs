@@ -1,5 +1,5 @@
 ﻿using ContactManager.Models;
-using ContactManagerRepositoryDict.Models;
+using ContactManagerRepositoryDB.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using NSubstitute;
@@ -9,15 +9,15 @@ namespace ContactManagerRepositoryDB.Integration.Commands
     [TestClass]
     public class ContactAddTests
     {
-        public ContactManagerConfiguration CreateContactManagerConfiguration()
+        public ContactManagerRepositoryConfiguration CreateContactManagerConfiguration()
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json");
             var appsettings = builder.Build();
 
-            var configuration = new ContactManagerConfiguration();
-            configuration.ConnectionString = appsettings["ContactManagerRepositoryDB:ConnectionString"];
+            var configuration = new ContactManagerRepositoryConfiguration();
+            configuration.ContactManagerRepositoryConnectionString = appsettings["ContactManagerRepositoryDB:ConnectionString"];
             return configuration;
         }
 

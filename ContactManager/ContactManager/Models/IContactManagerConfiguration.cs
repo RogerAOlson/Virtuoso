@@ -7,6 +7,6 @@
 
     public interface IContactManagerRepositoryConfiguration
     {
-        public string ConnectionString { get; }
+        public string ContactManagerRepositoryConnectionString { get; }
     }
 }

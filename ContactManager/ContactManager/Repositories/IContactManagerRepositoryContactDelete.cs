@@ -2,7 +2,7 @@
 
 namespace ContactManager.Repositories
 {
-    public interface IContactManangerRepositoryContactDelete
+    public interface IContactManagerRepositoryContactDelete
     {
         public Task ContactDeleteAsync(int contactId, ILogger logger);
     }

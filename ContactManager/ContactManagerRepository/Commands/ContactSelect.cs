@@ -4,21 +4,21 @@ using Microsoft.Extensions.Logging;
 
 namespace ContactManagerRepositoryDict
 {
-    public partial class Repository : IContactManangerRepositoryContactSelect
+    public partial class Repository : IContactManagerRepositoryContactSelect
     {
-        public Task<IContactSelectRepositoryResult> ContactSelectAsync(int contactId, ILogger logger)
+        public Task<IContactManagerRepositoryContactSelectResult?> ContactSelectAsync(int contactId, ILogger logger)
         {
             lock(Table)
             {
                 if (!Table.ContainsKey(contactId))
                 {
                     logger.Log(LogLevel.Error, $"Contact Id {contactId} not found");
-                    return Task.FromResult<IContactSelectRepositoryResult>(null);
+                    return Task.FromResult<IContactManagerRepositoryContactSelectResult?>(null);
                 }
 
                 var tuple = Table[contactId];
 
-                var result = (IContactSelectRepositoryResult)new ContactSelectRepositoryResult
+                var result = (IContactManagerRepositoryContactSelectResult)new ContactManagerRepositoryContactSelectResult
                 {
                     Id = tuple.Id,
                     FirstName = tuple.FirstName,
@@ -27,7 +27,7 @@ namespace ContactManagerRepositoryDict
                     PhoneNumber = tuple.PhoneNumber,
                 };
 
-                return Task.FromResult(result);
+                return Task.FromResult<IContactManagerRepositoryContactSelectResult?>(result);
             }
         }
     }

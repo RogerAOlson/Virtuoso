@@ -7,12 +7,12 @@ namespace ContactManager.Commands
 {
     public class ContactAddService : ContactService, IContactAddService
     {
-        public ContactAddService(IContactManangerRepositoryContactAdd repository)
+        public ContactAddService(IContactManagerRepositoryContactAdd repository)
         {
             ContactManagerRepository = repository;
         }
 
-        private IContactManangerRepositoryContactAdd ContactManagerRepository {  get; set; }
+        private IContactManagerRepositoryContactAdd ContactManagerRepository {  get; set; }
 
         public async Task<ContactAddResult> ExecuteAsync(ContactAdd model, ILogger logger)
         {

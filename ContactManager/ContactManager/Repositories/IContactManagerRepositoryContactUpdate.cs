@@ -3,7 +3,7 @@ using Microsoft.Extensions.Logging;
 
 namespace ContactManager.Repositories
 {
-    public interface IContactManangerRepositoryContactUpdate
+    public interface IContactManagerRepositoryContactUpdate
     {
         public Task ContactUpdateAsync(ContactUpdate model, ILogger logger);
     }

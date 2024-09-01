@@ -1,11 +1,8 @@
-﻿
-
-
--- DROP TABLE Contact 
+﻿-- DROP TABLE Contact 
 IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Contact]') AND type in (N'U'))
 BEGIN
 	CREATE TABLE dbo.Contact (
-	[ContactId] [int] IDENTITY(1,1) NOT NULL PRIMARY KEY,
+		ContactId INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
 		FirstName NVARCHAR(256) NULL,
 		LastName NVARCHAR(256) NULL,
 		Email NVARCHAR(256) NULL,

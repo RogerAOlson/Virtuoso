@@ -7,12 +7,12 @@ namespace ContactManager.Commands
 {
     public class ContactDeleteService : ContactService, IContactDeleteService
     {
-        public ContactDeleteService(IContactManangerRepositoryContactDelete repository)
+        public ContactDeleteService(IContactManagerRepositoryContactDelete repository)
         {
             ContactManagerRepository = repository;
         }
 
-        private IContactManangerRepositoryContactDelete ContactManagerRepository {  get; set; }
+        private IContactManagerRepositoryContactDelete ContactManagerRepository {  get; set; }
 
         public async Task<ContactDeleteResult> ExecuteAsync(int contactId, ILogger logger)
         {

@@ -1,6 +1,5 @@
 ﻿using ContactManager.Models;
 using MarketingWeb.ViewModels;
-using System.Net;
 
 namespace MarketingWeb.ViewModelProviders
 {

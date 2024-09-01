@@ -6,7 +6,7 @@ using System.Data;
 
 namespace ContactManagerRepositoryDB
 {
-    public partial class Repository : IContactManangerRepositoryContactAdd
+    public partial class Repository : IContactManagerRepositoryContactAdd
     {
         public async Task<int> ContactAddAsync(ContactAdd model, ILogger logger)
         {

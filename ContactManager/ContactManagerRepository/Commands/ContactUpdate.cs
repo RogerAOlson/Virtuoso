@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 
 namespace ContactManagerRepositoryDict
 {
-    public partial class Repository : IContactManangerRepositoryContactUpdate
+    public partial class Repository : IContactManagerRepositoryContactUpdate
     {
         public Task ContactUpdateAsync(ContactUpdate model, ILogger logger)
         {

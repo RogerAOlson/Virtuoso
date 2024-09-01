@@ -1,10 +1,24 @@
+using ContactManager.Models;
+using ContactManagerRepositoryDict.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
-ContactManager.ServiceCollectionExtensions.RegisterContactManager(builder.Services);
-Repository.ServiceCollectionExtensions.RegisterContactManagerRepository(builder.Services);
-MarketingWeb.ServiceCollectionExtensions.RegisterMarketingWeb(builder.Services);
 
-// Add services to the container.
+var configurationManager = new ContactManagerConfiguration();
+builder.Services.AddSingleton<IContactManagerRepositoryConfiguration>(configurationManager);
+
+ContactManager.ServiceCollectionExtensions.RegisterContactManager(builder.Services);
+MarketingWeb.ServiceCollectionExtensions.RegisterMarketingWeb(builder.Services);
+if (!builder.Environment.IsDevelopment())
+{
+    ContactManagerRepositoryDB.ServiceCollectionExtensions.RegisterContactManagerRepository(builder.Services);
+    configurationManager.ConnectionString = builder.Configuration.GetValue<string>("ContactManagerRepositoryDB:ConnectionString");
+}
+else
+{
+    ContactManagerRepositoryDict.ServiceCollectionExtensions.RegisterContactManagerRepository(builder.Services);
+}
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();

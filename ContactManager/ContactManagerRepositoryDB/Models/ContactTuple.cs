@@ -1,4 +1,4 @@
-﻿namespace ContactManagerRepositoryDict.Models
+﻿namespace Repository.Models
 {
     public class ContactTuple
     {

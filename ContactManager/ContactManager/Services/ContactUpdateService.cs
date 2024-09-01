@@ -58,7 +58,7 @@ namespace ContactManager.Commands
                 logger.Log(LogLevel.Error, "Unable to locate contact {ContactId}", model.Id);
                 return new ContactUpdateResult(ContactServiceResultType.ContactNotFound);
             }
-            catch(RepositoryExceptions)
+            catch(RepositoryException)
             {
                 logger.Log(LogLevel.Error, "Unexpected database error while inserting user");
             }

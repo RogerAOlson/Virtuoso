@@ -23,8 +23,8 @@ namespace MarketingWeb.Integration.Controllers.Contacts
             Assert.IsNotNull(contactSelectResultRecord);
             Assert.AreEqual(System.Net.HttpStatusCode.OK, response.StatusCode);
 
-            Assert.IsTrue(ContactManagerRepository.Repository.Table.ContainsKey(id));
-            var tuple = ContactManagerRepository.Repository.Table[id];
+            Assert.IsTrue(ContactManagerRepositoryDict.Repository.Table.ContainsKey(id));
+            var tuple = ContactManagerRepositoryDict.Repository.Table[id];
             Assert.AreEqual(contactSelectResultRecord.FirstName, tuple.FirstName);
             Assert.AreEqual(contactSelectResultRecord.LastName, tuple.LastName);
             Assert.AreEqual(contactSelectResultRecord.Email, tuple.Email);
@@ -86,8 +86,8 @@ namespace MarketingWeb.Integration.Controllers.Contacts
             var content = new StringContent(JsonConvert.SerializeObject(update), Encoding.UTF8, "application/json");
             var response = await httpClient.PutAsync("/v1/contact", content).ConfigureAwait(false);
 
-            Assert.IsTrue(ContactManagerRepository.Repository.Table.ContainsKey(update.Id));
-            var tuple = ContactManagerRepository.Repository.Table[update.Id];
+            Assert.IsTrue(ContactManagerRepositoryDict.Repository.Table.ContainsKey(update.Id));
+            var tuple = ContactManagerRepositoryDict.Repository.Table[update.Id];
             Assert.AreEqual(update.FirstName, tuple.FirstName);
             Assert.AreEqual(update.LastName, tuple.LastName);
             Assert.AreEqual(update.Email, tuple.Email);
@@ -112,7 +112,7 @@ namespace MarketingWeb.Integration.Controllers.Contacts
             var response = await httpClient.DeleteAsync($"/v1/contact/{id}").ConfigureAwait(false);
 
             response.EnsureSuccessStatusCode();
-            Assert.IsFalse(ContactManagerRepository.Repository.Table.ContainsKey(id));
+            Assert.IsFalse(ContactManagerRepositoryDict.Repository.Table.ContainsKey(id));
         }
 
         public async Task<int> AddContactTestAsync(ContactAdd model, HttpClient httpClient)
@@ -128,8 +128,8 @@ namespace MarketingWeb.Integration.Controllers.Contacts
             Assert.IsNotNull(contactAddResult);
             var id = contactAddResult.Id;
 
-            Assert.IsTrue(ContactManagerRepository.Repository.Table.ContainsKey(id));
-            var tuple = ContactManagerRepository.Repository.Table[id];
+            Assert.IsTrue(ContactManagerRepositoryDict.Repository.Table.ContainsKey(id));
+            var tuple = ContactManagerRepositoryDict.Repository.Table[id];
             Assert.AreEqual(model.FirstName, tuple.FirstName);
             Assert.AreEqual(model.LastName, tuple.LastName);
             Assert.AreEqual(model.Email, tuple.Email);

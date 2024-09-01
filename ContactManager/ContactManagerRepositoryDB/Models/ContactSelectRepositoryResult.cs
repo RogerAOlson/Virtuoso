@@ -1,6 +1,8 @@
-﻿namespace ContactManagerRepositoryDict.Models
+﻿using ContactManager.Repositories;
+
+namespace ContactManagerRepository.Models
 {
-    public class ContactTuple
+    public class ContactSelectRepositoryResult : IContactSelectRepositoryResult
     {
         public int Id { get; set; }
         public string? FirstName { get; set; }

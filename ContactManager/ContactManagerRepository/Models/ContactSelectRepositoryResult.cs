@@ -1,6 +1,6 @@
 ﻿using ContactManager.Repositories;
 
-namespace ContactManagerRepository.Models
+namespace ContactManagerRepositoryDict.Models
 {
     public class ContactSelectRepositoryResult : IContactSelectRepositoryResult
     {

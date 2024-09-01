@@ -29,7 +29,7 @@ namespace ContactManager.Commands
                 logger.Log(LogLevel.Error, "Unable to locate contact {ContactId}", contactId);
                 return new ContactDeleteResult(ContactServiceResultType.ContactNotFound);
             }
-            catch(RepositoryExceptions)
+            catch(RepositoryException)
             {
                 logger.Log(LogLevel.Error, "Unexpected database error while deleting contact {ContactId}", contactId);
             }

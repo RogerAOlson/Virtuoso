@@ -1,9 +1,12 @@
-﻿using Repository.Models;
+﻿using ContactManagerRepositoryDict.Models;
 
-namespace ContactManagerRepository
+namespace ContactManagerRepositoryDict
 {
     public partial class Repository
     {
+        public Repository()
+        { }
+
         static Repository()
         {
             Table = new Dictionary<int, ContactTuple>

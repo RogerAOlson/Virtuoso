@@ -56,7 +56,7 @@ namespace ContactManager.Commands
                 logger.Log(LogLevel.Error, "Contact already exists");
                 return new ContactAddResult(ContactServiceResultType.ContactAlreadyExists);
             }
-            catch (RepositoryExceptions)
+            catch (RepositoryException)
             {
                 logger.Log(LogLevel.Error, "Unexpected database error while deleting contact");
             }

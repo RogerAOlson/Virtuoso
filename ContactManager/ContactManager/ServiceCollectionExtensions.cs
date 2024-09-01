@@ -6,7 +6,7 @@ namespace ContactManager
 {
     public static class ServiceCollectionExtensions
     {
-        public static void RegisterContactManager(this IServiceCollection services)
+        public static void RegisterContactManager(IServiceCollection services)
         {
             services.AddScoped<IContactSelectService, ContactSelectService>();
             services.AddScoped<IContactAddService, ContactAddService>();

@@ -4,6 +4,6 @@ namespace ContactManager.Repositories
 {
     public interface IContactManangerRepositoryContactSelect
     {
-        public Task<IContactSelectRepositoryResult> ContactSelectAsync(int contactId, ILogger logger);
+        public Task<IContactSelectRepositoryResult?> ContactSelectAsync(int contactId, ILogger logger);
     }
 }

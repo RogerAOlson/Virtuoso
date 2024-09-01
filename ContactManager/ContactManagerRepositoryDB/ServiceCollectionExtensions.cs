@@ -1,11 +1,11 @@
 ﻿using ContactManager.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace ContactManagerRepositoryDict
+namespace ContactManagerRepositoryDB
 {
     public static class ServiceCollectionExtensions
     {
-        public static void RegisterContactManagerRepository(IServiceCollection services)
+        public static void RegisterContactManagerRepository(this IServiceCollection services)
         {
             services.AddScoped<IContactManangerRepositoryContactSelect, Repository>();
             services.AddScoped<IContactManangerRepositoryContactAdd, Repository>();

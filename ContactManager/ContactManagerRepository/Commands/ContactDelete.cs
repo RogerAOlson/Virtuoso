@@ -2,19 +2,22 @@
 using ContactManager.Repositories;
 using Microsoft.Extensions.Logging;
 
-namespace ContactManagerRepository
+namespace ContactManagerRepositoryDict
 {
     public partial class Repository : IContactManangerRepositoryContactDelete
     {
         public Task ContactDeleteAsync(int contactId, ILogger logger)
         {
-            if (!Table.ContainsKey(contactId))
+            lock(Table)
             {
-                logger.Log(LogLevel.Error, $"Contact Id {contactId} not found");
-                throw new RecordNotFoundException();
-            }
+                if (!Table.ContainsKey(contactId))
+                {
+                    logger.Log(LogLevel.Error, $"Contact Id {contactId} not found");
+                    throw new RecordNotFoundException();
+                }
 
-            Table.Remove(contactId);
+                Table.Remove(contactId);
+            }
 
             return Task.CompletedTask;
         }

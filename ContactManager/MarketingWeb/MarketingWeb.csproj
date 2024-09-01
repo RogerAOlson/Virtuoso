@@ -7,7 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ContactManagerRepository\ContactManagerRepository.csproj" />
+    <ProjectReference Include="..\ContactManagerRepositoryDB\ContactManagerRepositoryDB.csproj" />
+    <ProjectReference Include="..\ContactManagerRepository\ContactManagerRepositoryDict.csproj" />
     <ProjectReference Include="..\ContactManager\ContactManager.csproj" />
     <InternalsVisibleTo Include="MarketingWeb.Integration" />
   </ItemGroup>

@@ -40,7 +40,7 @@ namespace ContactManager.Commands
                 };
                 return result;
             }
-            catch (RepositoryExceptions)
+            catch (RepositoryException)
             {
                 logger.Log(LogLevel.Error, "Unexpected database error while deleting contact {ContactId}", contactId);
             }

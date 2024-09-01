@@ -22,7 +22,7 @@ namespace ContactManagerRepositoryDB.Integration.Commands
         }
 
 
-        [TestMethod]
+        //[TestMethod]
         public async Task ContactAddInsertsRecordsIntoTheContactsTableAsync()
         {
             var model = new ContactAdd

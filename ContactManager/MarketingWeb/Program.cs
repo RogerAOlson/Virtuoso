@@ -3,12 +3,11 @@ using ContactManagerRepositoryDB.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
-
 ContactManager.ServiceCollectionExtensions.RegisterContactManager(builder.Services);
 MarketingWeb.ServiceCollectionExtensions.RegisterMarketingWeb(builder.Services);
 if (!builder.Environment.IsDevelopment())
 {
+    // Contacts are stored in a database
     ContactManagerRepositoryDB.ServiceCollectionExtensions.RegisterContactManagerRepository(builder.Services);
 
     var configurationManager = new ContactManagerRepositoryConfiguration();
@@ -17,6 +16,7 @@ if (!builder.Environment.IsDevelopment())
 }
 else
 {
+    // Contacts are stored in memory
     ContactManagerRepositoryDict.ServiceCollectionExtensions.RegisterContactManagerRepository(builder.Services);
 }
 

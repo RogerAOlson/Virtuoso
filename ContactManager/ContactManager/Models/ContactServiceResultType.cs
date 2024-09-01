@@ -5,7 +5,10 @@
         Success = 1,
 
         UnknownError = 1001,
-        IdIsRequired,
+        ContactAlreadyExists,
+        ContactNotFound,
+
+        IdIsRequired = 2001,
         IdIsInvalid,
         FirstNameIsRequired,
         FirstNameIsInvalid,
@@ -15,8 +18,5 @@
         EmailIsInvalid,
         PhoneNumberIsRequired,
         PhoneNumberIsInvalid,
-
-        ContactAlreadyExists,
-        ContactNotFound,
     }
 }
